@@ -1,0 +1,57 @@
+{
+  "name": "",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "cucumber": "./node_modules/cucumber/bin/cucumber-js tests/features/**/*.feature --require-module ts-node/register --require 'step-definitions/**/*.ts'",
+    "start": "node ./build/src/index.js",
+    "clean": "rm -rf ./build",
+    "build": "npm run clean && npm run prettify && tsc",
+    "test": "jest",
+    "dev": "npm run clean && nodemon -e ts --exec \"npm run build && npm start\"",
+    "prettify": "npx prettier --write 'src/**/*.ts'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SBen-IV/tp-aninfo.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SBen-IV/tp-aninfo/issues"
+  },
+  "homepage": "https://github.com/SBen-IV/tp-aninfo#readme",
+  "dependencies": {
+    "prettier": "^2.3.2",
+    "typescript": "^4.4.2"
+  },
+  "devDependencies": {
+    "@types/cucumber": "^6.0.1",
+    "@types/jest": "^25.1.3",
+    "@types/node": "^13.13.52",
+    "@typescript-eslint/eslint-plugin": "^2.34.0",
+    "@typescript-eslint/parser": "^2.34.0",
+    "chai": "^4.3.4",
+    "cucumber": "^6.0.5",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.15.0",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-prettier": "^3.4.1",
+    "jest": "^25.1.0",
+    "jest-mock-extended": "^1.0.18",
+    "prettier": "^2.0.5",
+    "ts-jest": "^25.5.1",
+    "ts-node": "^8.10.2",
+    "typescript": "^3.6.4"
+  },
+  "prettier": {
+    "trailingComma": "es5",
+    "tabWidth": 4,
+    "semi": true,
+    "singleQuote": true
+  },
+  "engines": {
+    "node": "16.x"
+  }
+}
