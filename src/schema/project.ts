@@ -1,37 +1,44 @@
-import mongoose,{ Schema } from 'mongoose';
+import mongoose, { Schema } from 'mongoose';
 
 // Document interface
-enum ProjectTypes{
-    Desarrollo = "Desarrollo",
-    Implementacion = "Implementacion"
+enum ProjectTypes {
+    Development = 'Desarrollo',
+    Implementation = 'Implementacion',
 }
 
-enum States{
-    NoIniciado = "No Inciado",
-    EnCurso = "En curso",
-    Terminado = "Terminado"
+enum States {
+    NotStarted = 'No Inciado',
+    InProgress = 'En curso',
+    Finished = 'Finished',
 }
 
 interface Project {
-    nombre: string,
-    descripcion: string,
-    fechaInicio: Date,
-    fechaFin: Date,
-    tipo: ProjectTypes,
-    estado: States,
-    liderProyecto: string
+    nombre: string;
+    descripcion: string;
+    fechaInicio: Date;
+    fechaFin: Date;
+    tipo: ProjectTypes;
+    estado: States;
+    liderProyecto: string;
 }
 
 // Schema
 const project = new Schema<Project>({
-  nombre: { type: String, required: true },
-  descripcion: { type: String, default: ""},
-  fechaInicio: { type: Date},
-  fechaFin: { type: Date},
-  tipo: { type: String, enum: Object.values(ProjectTypes), default: ProjectTypes.Desarrollo },
-  estado: { type: String, enum: Object.values(States), default: States.NoIniciado },
-  liderProyecto: { type: String, default: "" }
+    nombre: { type: String, required: true },
+    descripcion: { type: String, default: '' },
+    fechaInicio: { type: Date },
+    fechaFin: { type: Date },
+    tipo: {
+        type: String,
+        enum: Object.values(ProjectTypes),
+        default: ProjectTypes.Development,
+    },
+    estado: {
+        type: String,
+        enum: Object.values(States),
+        default: States.NotStarted,
+    },
+    liderProyecto: { type: String, default: '' },
 });
 
-
-export default mongoose.model("project", project);
+export default mongoose.model('project', project);
