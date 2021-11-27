@@ -1,6 +1,7 @@
 import express, { Application } from 'express';
 import swaggerUi from 'swagger-ui-express';
-import Router from './router/Router';
+import tasksRouter from './router/tasksRouter';
+import projectsRouter from './router/projectsRouter';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 
@@ -11,7 +12,8 @@ const PORT = process.env.PORT || 8000;
 const app: Application = express();
 
 app.use(express.json());
-app.use(Router);
+app.use(tasksRouter);
+app.use(projectsRouter);
 app.use(express.static('public'));
 
 app.use(
@@ -30,5 +32,5 @@ app.use(
 })();
 
 app.listen(PORT, () => {
-    console.log('Server is running on port', PORT);
+    console.log(`Server is running on http://localhost:${PORT}`);
 });
