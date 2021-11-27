@@ -1,9 +1,8 @@
 import mongoose, { Schema } from 'mongoose';
 
 // Document interface
-
 enum TaskStates {
-    NotStarted = 'No Inciada',
+    NotStarted = 'No Iniciada',
     InProgress = 'En curso',
     Finished = 'Terminada',
 }
@@ -14,6 +13,7 @@ export interface Task {
     empleadosResponsables: Array<string>;
     estado: TaskStates;
     proyectoID: string;
+    ticketIDs: Array<string>;
 }
 
 // Schema
@@ -27,6 +27,7 @@ const task = new Schema<Task>({
         default: TaskStates.NotStarted,
     },
     proyectoID: { type: String, required: true },
+    ticketIDs: [],
 });
 
 export default mongoose.model('task', task);

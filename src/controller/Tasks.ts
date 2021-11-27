@@ -17,7 +17,7 @@ export default class TaskController {
         @Path() projectId: string,
         @Query() taskId?: any
     ): Promise<TaskGetResponse> {
-        let tasks = taskId
+        const tasks = taskId
             ? await TaskSchema.find({ _id: taskId })
             : await TaskSchema.find({ proyectoID: projectId });
         return {
@@ -30,16 +30,11 @@ export default class TaskController {
         @Path() projectId: any,
         @Body() requestBody: Task
     ): Promise<TaskPostResponse> {
-        const { nombre, descripcion, empleadosResponsables, estado } =
-            requestBody;
         const taskData = {
-            nombre,
-            descripcion,
-            empleadosResponsables,
-            estado,
+						...requestBody,
             proyectoID: projectId,
         };
-        let task = new TaskSchema(taskData);
+        const task = new TaskSchema(taskData);
         await task.save();
         return {
             message: 'todo salio bien',

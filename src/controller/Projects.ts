@@ -16,7 +16,7 @@ export default class ProjectController {
     public async getProjects(
         @Query() projectId?: any
     ): Promise<ProjectGetResponse> {
-        let projects = projectId
+        const projects = projectId
             ? await ProjectSchema.find({ _id: projectId })
             : await ProjectSchema.find();
         return {
@@ -46,7 +46,7 @@ export default class ProjectController {
             estado,
             liderProyecto,
         };
-        let project = new ProjectSchema(datosProyecto);
+        const project = new ProjectSchema(datosProyecto);
         await project.save();
         return {
             message: 'todo salio bien',
