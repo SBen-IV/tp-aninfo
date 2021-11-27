@@ -1,0 +1,280 @@
+{
+	"components": {
+		"examples": {},
+		"headers": {},
+		"parameters": {},
+		"requestBodies": {},
+		"responses": {},
+		"schemas": {
+			"ProjectTypes": {
+				"enum": [
+					"Desarrollo",
+					"Implementacion"
+				],
+				"type": "string"
+			},
+			"States": {
+				"enum": [
+					"No Inciado",
+					"En curso",
+					"Terminado"
+				],
+				"type": "string"
+			},
+			"Project": {
+				"properties": {
+					"nombre": {
+						"type": "string"
+					},
+					"descripcion": {
+						"type": "string"
+					},
+					"fechaInicio": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"fechaFin": {
+						"type": "string",
+						"format": "date-time"
+					},
+					"tipo": {
+						"$ref": "#/components/schemas/ProjectTypes"
+					},
+					"estado": {
+						"$ref": "#/components/schemas/States"
+					},
+					"liderProyecto": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"nombre",
+					"descripcion",
+					"fechaInicio",
+					"fechaFin",
+					"tipo",
+					"estado",
+					"liderProyecto"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ProjectGetResponse": {
+				"properties": {
+					"message": {
+						"items": {
+							"$ref": "#/components/schemas/Project"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"message"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ProjectPostResponse": {
+				"properties": {
+					"message": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"message"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"TaskStates": {
+				"enum": [
+					"No Inciada",
+					"En curso",
+					"Terminada"
+				],
+				"type": "string"
+			},
+			"Task": {
+				"properties": {
+					"nombre": {
+						"type": "string"
+					},
+					"descripcion": {
+						"type": "string"
+					},
+					"empleadosResponsables": {
+						"items": {
+							"type": "string"
+						},
+						"type": "array"
+					},
+					"estado": {
+						"$ref": "#/components/schemas/TaskStates"
+					}
+				},
+				"required": [
+					"nombre",
+					"descripcion",
+					"empleadosResponsables",
+					"estado"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"TaskGetResponse": {
+				"properties": {
+					"message": {
+						"items": {
+							"$ref": "#/components/schemas/Task"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"message"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"TaskPostResponse": {
+				"properties": {
+					"message": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"message"
+				],
+				"type": "object",
+				"additionalProperties": false
+			}
+		},
+		"securitySchemes": {}
+	},
+	"info": {
+		"title": "",
+		"version": "1.0.0",
+		"license": {
+			"name": "ISC"
+		},
+		"contact": {}
+	},
+	"openapi": "3.0.0",
+	"paths": {
+		"/projects": {
+			"get": {
+				"operationId": "GetProjects",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ProjectGetResponse"
+								}
+							}
+						}
+					}
+				},
+				"security": [],
+				"parameters": []
+			},
+			"post": {
+				"operationId": "CreateProject",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ProjectPostResponse"
+								}
+							}
+						}
+					}
+				},
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/Project"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/projects/{projectId}/tasks": {
+			"get": {
+				"operationId": "GetTasks",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/TaskGetResponse"
+								}
+							}
+						}
+					}
+				},
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "projectId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			},
+			"post": {
+				"operationId": "CreateTask",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/TaskPostResponse"
+								}
+							}
+						}
+					}
+				},
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "projectId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/Task"
+							}
+						}
+					}
+				}
+			}
+		}
+	},
+	"servers": [
+		{
+			"url": "/"
+		}
+	]
+}
