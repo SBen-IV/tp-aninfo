@@ -1,4 +1,4 @@
-import { Get, Post, Body, Route, Query, Delete, Path, Patch } from 'tsoa';
+import { Get, Post, Body, Route, Query, Delete, Path, Patch, Tags } from 'tsoa';
 import ProjectSchema, { Project } from '../schema/project';
 
 interface ProjectGetResponse {
@@ -10,6 +10,7 @@ interface ProjectPostResponse {
 }
 
 @Route('/projects')
+@Tags("Projects")
 export default class ProjectController {
     @Get('/')
     public async getProjects(
