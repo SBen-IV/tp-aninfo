@@ -7,9 +7,9 @@ enum ProjectTypes {
 }
 
 enum States {
-    NotStarted = 'No Inciado',
+    NotStarted = 'No Iniciado',
     InProgress = 'En curso',
-    Finished = 'Finished',
+    Finished = 'Terminado',
 }
 
 interface Project {

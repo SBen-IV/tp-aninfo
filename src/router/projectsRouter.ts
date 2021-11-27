@@ -39,4 +39,15 @@ router.delete('/projects/:projectId', async (req, res) =>  {
     return res.status(200).send(response);
 })
 
+router.patch('/projects/:projectId', async (req, res) => {
+    const controller = new ProjectController();
+    let response;
+    try {
+        response = await controller.updateProject(req.params.projectId, req.body);
+    } catch (error) {
+        return res.status(400).send(error);
+    }
+    return res.status(200).send(response);
+});
+
 export default router;

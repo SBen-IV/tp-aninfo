@@ -1,4 +1,4 @@
-import { Get, Post, Body, Route, Query, Delete, Path } from 'tsoa';
+import { Get, Post, Body, Route, Query, Delete, Path, Patch } from 'tsoa';
 import ProjectSchema from '../schema/project';
 
 enum ProjectTypes {
@@ -7,7 +7,7 @@ enum ProjectTypes {
 }
 
 enum States {
-    NotStarted = 'No Inciado',
+    NotStarted = 'No Iniciado',
     InProgress = 'En curso',
     Finished = 'Terminado',
 }
@@ -74,6 +74,17 @@ export default class ProjectController {
     @Delete('/{projectId}')
     public async deleteProject(@Path() projectId: string) {
         await ProjectSchema.findByIdAndDelete(projectId);
+        return {
+            message: 'todo salio bien',
+        };
+    }
+
+    @Patch('/{projectId}')
+    public async updateProject(
+        @Path() projectId: string,
+        @Body() requestBody: Project
+    ): Promise<ProjectPostResponse> {
+        await ProjectSchema.findByIdAndUpdate(projectId, requestBody);
         return {
             message: 'todo salio bien',
         };
