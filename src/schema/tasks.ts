@@ -8,7 +8,7 @@ enum TaskStates {
     Finished = 'Terminada',
 }
 
-interface Task {
+export interface Task {
     nombre: string;
     descripcion: string;
     empleadosResponsables: Array<string>;

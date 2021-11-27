@@ -12,7 +12,7 @@ enum States {
     Finished = 'Terminado',
 }
 
-interface Project {
+export interface Project {
     nombre: string;
     descripcion: string;
     fechaInicio: Date;

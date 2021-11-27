@@ -1,25 +1,5 @@
 import { Get, Post, Body, Route, Query, Delete, Path, Patch } from 'tsoa';
-import ProjectSchema from '../schema/project';
-
-enum ProjectTypes {
-    Development = 'Desarrollo',
-    Implementation = 'Implementacion',
-}
-
-enum States {
-    NotStarted = 'No Iniciado',
-    InProgress = 'En curso',
-    Finished = 'Terminado',
-}
-interface Project {
-    nombre: string;
-    descripcion: string;
-    fechaInicio: Date;
-    fechaFin: Date;
-    tipo: ProjectTypes;
-    estado: States;
-    liderProyecto: string;
-}
+import ProjectSchema, { Project } from '../schema/project';
 
 interface ProjectGetResponse {
     message: Array<Project>;
@@ -42,6 +22,7 @@ export default class ProjectController {
             message: projects,
         };
     }
+
     @Post('/')
     public async createProject(
         @Body() requestBody: Project

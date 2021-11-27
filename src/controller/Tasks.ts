@@ -1,18 +1,5 @@
 import { Get, Post, Body, Path, Route, Delete, Patch, Query } from 'tsoa';
-import TaskSchema from '../schema/tasks';
-
-enum TaskStates {
-    NotStarted = 'No Inciada',
-    InProgress = 'En curso',
-    Finished = 'Terminada',
-}
-
-interface Task {
-    nombre: string;
-    descripcion: string;
-    empleadosResponsables: Array<string>;
-    estado: TaskStates;
-}
+import TaskSchema, { Task } from '../schema/tasks';
 
 interface TaskGetResponse {
     message: Array<Task>;
