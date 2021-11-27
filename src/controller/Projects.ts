@@ -1,4 +1,4 @@
-import { Get, Post, Body, Route } from 'tsoa';
+import { Get, Post, Body, Route, Query, Delete, Path } from 'tsoa';
 import ProjectSchema from '../schema/project';
 
 enum ProjectTypes {
@@ -32,8 +32,12 @@ interface ProjectPostResponse {
 @Route('/projects')
 export default class ProjectController {
     @Get('/')
-    public async getProjects(): Promise<ProjectGetResponse> {
-        let projects = await ProjectSchema.find();
+    public async getProjects(
+        @Query() projectId?: any
+    ): Promise<ProjectGetResponse> {
+        let projects = projectId
+            ? await ProjectSchema.find({ _id: projectId })
+            : await ProjectSchema.find();
         return {
             message: projects,
         };
@@ -62,6 +66,14 @@ export default class ProjectController {
         };
         let project = new ProjectSchema(datosProyecto);
         await project.save();
+        return {
+            message: 'todo salio bien',
+        };
+    }
+
+    @Delete('/{projectId}')
+    public async deleteProject(@Path() projectId: string) {
+        await ProjectSchema.findByIdAndDelete(projectId);
         return {
             message: 'todo salio bien',
         };

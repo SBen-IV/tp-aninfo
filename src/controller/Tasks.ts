@@ -1,4 +1,4 @@
-import { Get, Post, Body, Path, Route } from 'tsoa';
+import { Get, Post, Body, Path, Route, Delete, Patch, Query } from 'tsoa';
 import TaskSchema from '../schema/tasks';
 
 enum TaskStates {
@@ -25,8 +25,13 @@ interface TaskPostResponse {
 @Route('/projects/{projectId}/tasks')
 export default class TaskController {
     @Get('/')
-    public async getTasks(@Path() projectId: string): Promise<TaskGetResponse> {
-        let tasks = await TaskSchema.find({ proyectoID: projectId });
+    public async getTasks(
+        @Path() projectId: string,
+        @Query() taskId?: any
+    ): Promise<TaskGetResponse> {
+        let tasks = taskId
+            ? await TaskSchema.find({ _id: taskId })
+            : await TaskSchema.find({ proyectoID: projectId });
         return {
             message: tasks,
         };
@@ -48,6 +53,32 @@ export default class TaskController {
         };
         let task = new TaskSchema(taskData);
         await task.save();
+        return {
+            message: 'todo salio bien',
+        };
+    }
+
+    @Delete('/{taskId}')
+    public async deleteTask(@Path() taskId: string): Promise<TaskPostResponse> {
+        await TaskSchema.findByIdAndDelete(taskId);
+        return {
+            message: 'todo salio bien',
+        };
+    }
+
+    public async deleteTasksFromProject(projectId: string): Promise<TaskPostResponse> {
+        await TaskSchema.deleteMany({ pryectoID: projectId });
+        return {
+            message: 'todo salio bien',
+        };
+    }
+
+    @Patch('/{taskId}')
+    public async updateTask(
+        @Path() taskId: string,
+        @Body() requestBody: Task
+    ): Promise<TaskPostResponse> {
+        await TaskSchema.findByIdAndUpdate(taskId, requestBody);
         return {
             message: 'todo salio bien',
         };
