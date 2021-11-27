@@ -12,6 +12,12 @@ interface TaskPostResponse {
 @Route('/projects/{projectId}/tasks')
 @Tags("Tasks")
 export default class TaskController {
+
+		/**
+		 * Also filters by taskId if it's passed as a query parameter.
+		 * 
+		 * @summary Obtains all the tasks
+		 */
     @Get('/')
     public async getTasks(
         @Path() projectId: string,
@@ -25,6 +31,9 @@ export default class TaskController {
         };
     }
 
+		/**
+		 * @summary Creates a task
+		 */
     @Post('/')
     public async createTask(
         @Path() projectId: any,
@@ -41,6 +50,9 @@ export default class TaskController {
         };
     }
 
+		/**
+		 * @summary Deletes the task given the taskId
+		 */
     @Delete('/{taskId}')
     public async deleteTask(@Path() taskId: string): Promise<TaskPostResponse> {
         await TaskSchema.findByIdAndDelete(taskId);
@@ -56,6 +68,9 @@ export default class TaskController {
         };
     }
 
+		/**
+		 * @summary Modifies the task given the taskId
+		 */
     @Patch('/{taskId}')
     public async updateTask(
         @Path() taskId: string,

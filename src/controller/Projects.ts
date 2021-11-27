@@ -12,6 +12,12 @@ interface ProjectPostResponse {
 @Route('/projects')
 @Tags("Projects")
 export default class ProjectController {
+
+		/**
+		 * Also filters by projectId if it's passed as a query parameter.
+		 * 
+		 * @summary Obtains all the projects
+		 */
     @Get('/')
     public async getProjects(
         @Query() projectId?: any
@@ -24,35 +30,23 @@ export default class ProjectController {
         };
     }
 
+		/**
+		 * @summary Creates a project
+		 */
     @Post('/')
     public async createProject(
         @Body() requestBody: Project
     ): Promise<ProjectPostResponse> {
-        const {
-            nombre,
-            descripcion,
-            fechaInicio,
-            fechaFin,
-            tipo,
-            estado,
-            liderProyecto,
-        } = requestBody;
-        const datosProyecto = {
-            nombre,
-            descripcion,
-            fechaInicio,
-            fechaFin,
-            tipo,
-            estado,
-            liderProyecto,
-        };
-        const project = new ProjectSchema(datosProyecto);
+        const project = new ProjectSchema(requestBody);
         await project.save();
         return {
             message: 'todo salio bien',
         };
     }
 
+		/**
+		 * @summary Deletes the project given the projectId
+		 */
     @Delete('/{projectId}')
     public async deleteProject(@Path() projectId: string) {
         await ProjectSchema.findByIdAndDelete(projectId);
@@ -61,6 +55,9 @@ export default class ProjectController {
         };
     }
 
+		/**
+		 * @summary Modifies the project given the projectId
+		 */
     @Patch('/{projectId}')
     public async updateProject(
         @Path() projectId: string,
