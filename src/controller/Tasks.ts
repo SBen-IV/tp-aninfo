@@ -55,7 +55,7 @@ export default class TaskController {
     }
 
     public async deleteTasksFromProject(projectId: string): Promise<TaskPostResponse> {
-        await TaskSchema.deleteMany({ pryectoID: projectId });
+        await TaskSchema.deleteMany({ proyectoID: projectId });
         return {
             message: 'todo salio bien',
         };
