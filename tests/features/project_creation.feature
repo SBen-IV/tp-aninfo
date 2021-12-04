@@ -1,6 +1,6 @@
 Feature: Project Creation
 
-    As a PM, 
+    As a user, 
     I want to be able to create a new project, 
     so that I can track my projects and tasks.
 
