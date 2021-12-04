@@ -50,7 +50,10 @@ Feature: Project Creation
         When I submit the form
         Then I don't see the project in the list
         And I'm informed that the project must have a description
-    
 
-
-    
+    Scenario: Invalid Start And End Date
+        Given that I'm in the creation form
+        And the start date is after the end date
+        When I submit the form
+        Then I don't see the project in the list
+        And I'm informed that the project must have a valid start and end date

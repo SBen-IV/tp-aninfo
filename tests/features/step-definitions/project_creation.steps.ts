@@ -20,12 +20,17 @@ Then("I should see the project in the list", function () {
     return "pending";
 });
 
-Then("I don't see the project in the list", function () {
+Then("I shouldn't see the project in the list", function () {
     // Write code here that turns the phrase above into concrete actions
     return "pending";
 });
 
 Then("I'm informed that the project must have a {string}", function (missingField: string) {
+    // Write code here that turns the phrase above into concrete actions
+    return "pending";
+});
+
+Given("the start date is after the end date", function (){
     // Write code here that turns the phrase above into concrete actions
     return "pending";
 });
