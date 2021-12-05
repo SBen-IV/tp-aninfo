@@ -93,6 +93,7 @@ class NotAStatement(Statement):
     def __init__(self, line: str, outfile: TextIOWrapper):
         self.outfile = outfile
         self.line = line
+        self.pattern = self.get_pattern(line)
 
     def write_statement_block(self, antecessors: List[str], previous_patterns: Dict[str, List[str]]):
         pass
