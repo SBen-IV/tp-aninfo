@@ -1,7 +1,7 @@
 from __future__ import annotations
+import sys
 from io import TextIOWrapper
 from typing import Dict, List
-
 
 class Statement:
     name = None
@@ -98,9 +98,13 @@ class NotAStatement(Statement):
     def write_statement_block(self, antecessors: List[str], previous_patterns: Dict[str, List[str]]):
         pass
 
+    def get_pattern(self, line: str) -> str:
+        pass
+
+
 def main():
-    feature = "project_creation"
-    with open(f"./tests/features/{feature}.feature", "r") as file, open(f"{feature}.steps.ts", "w") as outfile:
+    feature = sys.argv[1].split('.')[0]
+    with open(f"./tests/features/{feature}.feature", "r") as file, open(f"./tests/features/step-definitions/{feature}.steps.ts", "w") as outfile:
         outfile.write('import { Given, When, Then, TableDefinition } from "cucumber";\n\n\n')
         antecessors = []
         previous_patterns = {
@@ -109,8 +113,11 @@ def main():
             "Then": [],
         }
 
-        for line in file.readlines():
-            Statement.for_line(line, outfile).write_statement_block(antecessors, previous_patterns)
+        line = file.readline()
+        while line:
+            statement = Statement.for_line(line, outfile)
+            statement.write_statement_block(antecessors, previous_patterns)
+            line = file.readline()
 
 
 if __name__ == '__main__':
