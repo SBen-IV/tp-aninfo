@@ -5,7 +5,7 @@ Given('that I\'m in the project modification form', function () {
     return 'pending';
 });
 
-Given('I change project {string}', function (projectProperty: string) {
+Given('I change project {string}', function (_projectProperty: string) {
     // Write code here that turns the phrase above into concrete actions
     return 'pending';
 });
@@ -15,7 +15,7 @@ When('I save the changes', function () {
     return 'pending';
 });
 
-Then('I should see the project with the new {string}', function (projectProperty: string) {
+Then('I should see the project with the new {string}', function (_projectProperty: string) {
     // Write code here that turns the phrase above into concrete actions
     return 'pending';
 });
