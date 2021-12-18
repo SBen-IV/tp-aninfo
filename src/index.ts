@@ -2,6 +2,7 @@ import express, { Application } from 'express';
 import swaggerUi from 'swagger-ui-express';
 import tasksRouter from './router/tasksRouter';
 import projectsRouter from './router/projectsRouter';
+import recursosRouter from './router/recursosRouter';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import cors from 'cors';
@@ -16,6 +17,7 @@ app.use(cors())
 app.use(express.json());
 app.use(tasksRouter);
 app.use(projectsRouter);
+app.use(recursosRouter);
 app.use(express.static('public'));
 
 app.use(
