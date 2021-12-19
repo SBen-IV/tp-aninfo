@@ -46,7 +46,7 @@ export default class TaskController {
         const task = new TaskSchema(taskData);
         await task.save();
         return {
-            message: 'todo salio bien',
+            message: task._id,
         };
     }
 
