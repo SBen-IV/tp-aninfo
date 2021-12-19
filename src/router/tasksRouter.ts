@@ -3,6 +3,17 @@ import TaskController from '../controller/Tasks';
 
 const router = express.Router();
 
+router.get('/tasks', async (req, res) => {
+    const controller = new TaskController();
+    let response;
+    try {
+        response = await controller.getAllTasks(req.query.taskId);
+    } catch (error) {
+        return res.status(400).send(error);
+    }
+    return res.status(200).send(response);
+});
+
 router.get('/projects/:projectId/tasks', async (req, res) => {
     const controller = new TaskController();
     let response;
