@@ -4,37 +4,37 @@ Feature: Task modification
     quiero modificar una tarea 
     para reflejar cambios que surgieron en la misma.
 
-    Escenario: Modificacion del nombre de la tarea
-        Dado que estoy modificando una tarea creada
-        Y modifico el nombre
-        Cuando guardo los cambios
-        Entonces la tarea se muestra con todos los cambios realizados.
+    Scenario: Modificacion del nombre de la tarea
+        Given que estoy modificando una tarea creada
+        And modifico el nombre
+        When guardo los cambios
+        Then la tarea se muestra con todos los cambios realizados.
 
-    Escenario: Modificacion de la descripcion de la tarea
-        Dado que estoy modificando una tarea creada
-        Y modifico la descripción
-        Cuando guardo los cambios
-        Entonces la tarea se muestra con todos los cambios realizados.
+    Scenario: Modificacion de la descripcion de la tarea
+        Given que estoy modificando una tarea creada
+        And modifico la descripción
+        When guardo los cambios
+        Then la tarea se muestra con todos los cambios realizados.
     
-    Escenario: Modificacion del proyecto de la tarea
-        Dado que estoy modificando una tarea creada
-        Y modifico el proyecto
-        Cuando guardo los cambios
-        Entonces la tarea se muestra con todos los cambios realizados
+    Scenario: Modificacion del proyecto de la tarea
+        Given que estoy modificando una tarea creada
+        And modifico el proyecto
+        When guardo los cambios
+        Then la tarea se muestra con todos los cambios realizados
     
-    Escenario: Modificacion del estado de un proyecto
-        Dado que estoy modificando una tarea creada
-        Y modifico el estado
-        Cuando guardo los cambios
-        Entonces la tarea se muestra con todos los cambios realizados.
+    Scenario: Modificacion del estado de un proyecto
+        Given que estoy modificando una tarea creada
+        And modifico el estado
+        When guardo los cambios
+        Then la tarea se muestra con todos los cambios realizados.
 
-    Escenario: Modificacion del empleado responsable de la tarea
-        Dado que estoy modificando una tarea creada
-        Y  modifico el empleado responsable
-        Cuando guardo los cambios
-        Entonces la tarea se muestra con todos los cambios realizados.
+    Scenario: Modificacion del empleado responsable de la tarea
+        Given que estoy modificando una tarea creada
+        And  modifico el empleado responsable
+        When guardo los cambios
+        Then la tarea se muestra con todos los cambios realizados.
 
-    Escenario: Cancellation of Task Modification
+    Scenario: Cancellation of Task Modification
         Given that I'm in the task modification form
         And I modify the description
         When I cancel the modification of the task

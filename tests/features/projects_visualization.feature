@@ -4,12 +4,12 @@ Feature: Visualización de proyectos
     quiero poder visualizar los proyectos existentes 
     para tener conocimiento de estos.
 
-    Escenario: Visualización cuando hay proyectos
-        Dado que soy un usuario
-        Cuando visualizo proyectos
-        Entonces se me informa su nombre, tipo, estado y líder
+    Scenario: Visualización cuando hay proyectos
+        Given que soy un usuario
+        When visualizo proyectos
+        Then se me informa su nombre, tipo, estado y líder
 
-    Escenario: Visualización cuando no hay proyectos
-        Dado que soy usuario
-        Cuando visualizo proyectos y no existe ninguno
-        Entonces se me informan que no existen proyectos y se me da la posibilidad de crear uno
+    Scenario: Visualización cuando no hay proyectos
+        Given que soy usuario
+        When visualizo proyectos y no existe ninguno
+        Then se me informan que no existen proyectos y se me da la posibilidad de crear uno
