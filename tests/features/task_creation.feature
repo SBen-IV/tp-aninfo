@@ -1,40 +1,29 @@
-Feature: Task creation
+Feature: Creación de tareas
 
-    As a user,
-    I want to be able to create a task inside a project,
-    So I can keep track of the work.
+    Como usuario 
+    quiero crear una tarea dentro de un proyecto
+    para dividir el trabajo en varias partes y así tener una mejor organización del trabajo.
 
-    Scenario: Successful Task Creation
-        Given that I'm in the creation form
-        And I fill the form with the following values:
-            | name | description | employees |
-        When I submit the form
-        Then the task is created.
-
-    Scenario: Empty Name Field
-        Given that I'm in the creation form
-        And I fill the form with the following values:
-            | description | employees |
-        When I submit the form
-        Then the task isn't created
-        And I'm informed that the task must have a name
-
-    Scenario: Empty Description Field
-        Given that I'm in the creation form
-        And I fill the form with the following values:
-            | name | employees |
-        When I submit the form
-        Then the task isn't created
-        And I'm informed that the task must have a description
-
-    Scenario: Successful Task Creation Without Employees
-        Given that I'm in the creation form
-        And I fill the form with the following values:
-            | name | description |
-        When I submit the form
-        Then the task is created
-
-    Scenario: Cancelled Task
-        Given that I'm in the creation form
-        When I cancel the creation of a task
-        Then the task isn't created.
+    Escenario: Crear una tarea con datos válidos
+        Dado que estoy en el formulario de creación de una tarea e ingreso los datos: nombre, proyecto
+        Cuando entrego el formulario
+        Entonces se crea la tarea.
+    
+    Escenario: Campo de nombre vacío
+        Dado que estoy en el formulario de creación de una tarea
+        Y no se ingresa un nombre
+        Cuando entrego el formulario
+        Entonces no se crea la tarea 
+        Y se me informa que la tarea debe tener un nombre.
+    
+    Escenario: Campo de proyecto vacío
+        Dado que estoy en el formulario de creación de una tarea
+        Y no se ingresa un proyecto
+        Cuando entrego el formulario
+        Entonces no se crea la tarea 
+        Y se me informa que la tarea debe tener un proyecto asociado.
+    
+    Escenario: Cancelar creación
+        Dado que estoy en el formulario de creación una tarea
+        Cuando cancelo la creación de la tarea
+        Entonces no se crea la tarea.

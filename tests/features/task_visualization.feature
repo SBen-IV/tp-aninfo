@@ -1,15 +1,15 @@
-Feature:  Task visualization
+Feature: Visualización de tarea
 
-    As a user
-    I want to see the tasks in a project
-    So that I can manage them
+    Como usuario
+    Quiero poder visualizar la información de una tarea existente asociada a un proyecto existente
+    Para ver el estado de la misma.
 
-    Scenario: Task visualization successful
-        Given there is at least one tasks created
-        When I consult a task
-        Then I should see the tasks' name, description, state and responsible employees.
+    Escenario: Visualizacion exitosa de la tarea
+        Dado que hay al menos una tarea creada
+        Cuando consulto una tarea
+        Entonces me muestra nombre, descripción, estado y empleado responsable y ticket asociado.
 
-    Scenario: Task visualization failure
-        Given there are no tasks
-        When I consult a task
-        Then I'll be informed that there are no tasks to view.
+    Escenario: Visualizacion fallida de la tarea
+        Dado que no hay tareas
+        Cuando consulto las tareas
+        Entonces se me informará que no hay tareas para consultar.

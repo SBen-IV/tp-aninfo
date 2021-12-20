@@ -32,7 +32,7 @@ class Statement:
 
 
 class Given(Statement):
-    name = "Given"
+    name = "Dado"
 
     def __init__(self, line: str, outfile: TextIOWrapper) -> None:
         self.outfile = outfile
@@ -45,7 +45,7 @@ class Given(Statement):
 
 
 class And(Statement):
-    name = "And"
+    name = "Y"
 
     def __init__(self, line: str, outfile: TextIOWrapper) -> None:
         self.outfile = outfile
@@ -53,7 +53,7 @@ class And(Statement):
         self.pattern = self.get_pattern(line)
 
     def write_statement_block(self, antecessors: List[str], previous_patterns: Dict[str, List[str]]):
-        given_patterns, then_patterns = previous_patterns["Given"], previous_patterns["Then"]
+        given_patterns, then_patterns = previous_patterns["Dado"], previous_patterns["Cuando"]
         if not (self.pattern in given_patterns): 
             given_patterns.append(self.pattern)
         elif not (self.pattern in then_patterns):
@@ -63,7 +63,7 @@ class And(Statement):
 
 
 class When(Statement):
-    name = "When"
+    name = "Cuando"
 
     def __init__(self, line: str, outfile: TextIOWrapper):
         self.outfile = outfile
@@ -75,7 +75,7 @@ class When(Statement):
 
 
 class Then(Statement):
-    name = "Then"
+    name = "Entonces"
 
     def __init__(self, line: str, outfile: TextIOWrapper):
         self.outfile = outfile
@@ -105,12 +105,12 @@ class NotAStatement(Statement):
 def main():
     feature = sys.argv[1].split('.')[0]
     with open(f"./tests/features/{feature}.feature", "r") as file, open(f"./tests/features/step-definitions/{feature}.steps.ts", "w") as outfile:
-        outfile.write('import { Given, When, Then, TableDefinition } from "cucumber";\n\n\n')
+        outfile.write('import { Given, When, Then } from "cucumber";\n\n\n')
         antecessors = []
         previous_patterns = {
-            "Given": [],
-            "When": [],
-            "Then": [],
+            "Dado": [],
+            "Cuando": [],
+            "Entonces": [],
         }
 
         line = file.readline()

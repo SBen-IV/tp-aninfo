@@ -1,59 +1,35 @@
-Feature: Project Creation
+Feature: Creación de proyecto
 
-    As a user, 
-    I want to be able to create a new project, 
-    so that I can track my projects and tasks.
+    Como usuario
+    Quiero crear un proyecto
+    Para tener una mejor trazabilidad sobre los proyectos existentes
 
-    Scenario: Succesful Project Creation
-        Given that I'm in the creation form
-        And I fill the form with the following values:
-            | name | type | startDate | endDate | description |
-        When I submit the form
-        Then I should see the project in the list
+    Escenario: Crear un proyecto con datos válidos
+        Dado que estoy en el formulario de creación del proyecto e ingreso los campos obligatorio nombre y tipo
+        Cuando entrego el formulario
+        Entonces se crea el proyecto
 
-    Scenario: Empty Name Field
-        Given that I'm in the creation form
-        And I fill the form with the following values:
-            | type | startDate | endDate | description |
-        When I submit the form
-        Then I don't see the project in the list
-        And I'm informed that the project must have a name 
+    Escenario: Campo de nombre vacío
+        Dado que estoy en el formulario de creación del proyecto y no se ingresa un nombre
+        Cuando entrego el formulario
+        Entonces no se crea el proyecto y se me informa que el proyecto debe tener un nombre
 
-    Scenario: Empty Type Field
-        Given that I'm in the creation form
-        And I fill the form with the following values:
-            | name | startDate | endDate | description |
-        When I submit the form
-        Then I don't see the project in the list
-        And I'm informed that the project must have a type 
+    Escenario: Campo de tipo vacío
+        Dado que estoy en el formulario de creación del proyecto y no se ingresa un tipo
+        Cuando entrego el formulario
+        Entonces no se crea el proyecto y se me informa que el proyecto debe tener un tipo
 
-    Scenario: Empty Start Date Field
-        Given that I'm in the creation form
-        And I fill the form with the following values:
-            | name | type | endDate | description |
-        When I submit the form
-        Then I don't see the project in the list
-        And I'm informed that the project must have a start date
+    Escenario: Fechas inválidas
+        Dado que estoy en el formulario de creación del proyecto y la fecha de inicio ingresada es posterior a la fecha de fin ingresada
+        Cuando entrego el formulario
+        Entonces no se crea el proyecto y se me informa que la fecha de inicio no puede ser posterior a la fecha de fin
 
-    Scenario: Empty End Date Field
-        Given that I'm in the creation form
-        And I fill the form with the following values:
-            | name | type | startDate | description |
-        When I submit the form
-        Then I don't see the project in the list
-        And I'm informed that the project must have an end date
+    Escenario: Tipos de proyectos disponibles
+        Dado que estoy en el formulario de creación de un proyecto
+        Cuando elijo el tipo del proyecto
+        Entonces se muestran los tipos de proyecto: Proyecto de Desarrollo y Proyecto de Implementación
 
-    Scenario: Empty Description Field
-        Given that I'm in the creation form
-        And I fill the form with the following values:
-            | name | type | startDate | endDate |
-        When I submit the form
-        Then I don't see the project in the list
-        And I'm informed that the project must have a description
-
-    Scenario: Invalid Start And End Date
-        Given that I'm in the creation form
-        And the start date is after the end date
-        When I submit the form
-        Then I don't see the project in the list
-        And I'm informed that the project must have a valid start and end date
+    Escenario:
+        Dado que estoy en el formulario de creación de un proyecto
+        Cuando cancelo la creación del proyecto
+        Entonces no se crea el proyecto

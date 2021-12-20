@@ -1,25 +1,18 @@
-Feature: Project Deletion
+Feature: Borrado de Proyecto
 
-    As a user
-    I want to delete a created project
-    So that I can delete it from the system
+    Como usuario
+    Quiero borrar un proyecto creado
+    Para dejar de llevar una trazabilidad sobre el mismo
 
-    Scenario: Delete a project
-        Given that I'm modifying a project
-        When I delete the project
-        Then all the associated tasks are deleted
-        And the project is deleted
-        And I should't see the project in the projects list
+    Escenario: Borrar un proyecto
+        Dado que estoy editando un proyecto
+        Cuando elimino el proyecto
+        Entonces Todas las tareas asociadas al proyecto se borrarán
+        Y se borra el proyecto
 
-    Scenario: 
-        Given that I'm in the project list page
-        And there is at least one created project
-        When I delete the project
-        Then all the associated tasks are deleted
-        And the project is deleted
-        And I should't see the project in the projects list
-
-    Scenario: 
-        Given that a project doesn't exist
-        When I delete the project
-        Then I should see an error message: "Project doesn't exist"
+    Escenario: Lista no vacía
+        Dado que estoy en la pagina de proyectos
+        Y hay al menos un proyecto creado
+        Cuando elimino el proyecto
+        Entonces Todas las tareas asociadas se borrarán
+        Y se borra el proyecto

@@ -1,32 +1,32 @@
 import { Given, When, Then } from "cucumber";
 
 
-Given("I am on the task modification form", function() {
+Given("que soy un usuario", function() {
 	// Write code here that turns the phrase above into concrete actions
 	return "pending";
 });
 
-Given("I delete a responsible employee from the task that I am editing", function() {
+When("visualizo proyectos", function() {
 	// Write code here that turns the phrase above into concrete actions
 	return "pending";
 });
 
-When("I save the changes", function() {
+Then("se me informa su nombre, tipo, estado y líder", function() {
 	// Write code here that turns the phrase above into concrete actions
 	return "pending";
 });
 
-Then("the employee will be deleted from the task.", function() {
+Given("que soy usuario", function() {
 	// Write code here that turns the phrase above into concrete actions
 	return "pending";
 });
 
-When("I cancel the changes", function() {
+When("visualizo proyectos y no existe ninguno", function() {
 	// Write code here that turns the phrase above into concrete actions
 	return "pending";
 });
 
-Then("the employee will not be deleted from the task.", function() {
+Then("se me informan que no existen proyectos y se me da la posibilidad de crear uno", function() {
 	// Write code here that turns the phrase above into concrete actions
 	return "pending";
 });

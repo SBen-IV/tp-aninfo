@@ -1,15 +1,15 @@
-Feature: Project Visualization
+Feature: Visualización de Proyecto
 
-    As a user
-    I want to be able to consult a project
-    So that I can manage them
+    Como usuario
+    Quiero poder visualizar la informacion de un proyecto
+    Para ver el estado del mismo
 
-    Scenario: Successful project visualization
-        Given there is at least one project created
-        When I consult a project
-        Then I should see the project's name, type, start date, end date, and description
+    Escenario: Visualización de proyecto exitosa
+        Dado que hay al menos un proyecto creado
+        Cuando consulto el proyecto
+        Entonces Debería ver su nombre, estado, tipo, fecha de inicio, fecha de fin, descripción y tareas asociadas
 
-    Scenario: Unsuccessful project visualization
-        Given there is no project created
-        When I consult a project
-        Then I am informed that there is no projects to consult 
+    Scenario: Visualización de proyecto no exitosa
+        Dado que no hay proyectos
+        Cuando consulto los proyectos
+        Entonces se me informa que no hay proyectos para consultar

@@ -1,47 +1,45 @@
-Feature: Project Creation
+Feature: Modificación de proyecto
 
-    As a user, 
-    I want to be able to modify a created project, 
-    So to reflect changes that arose in the project.
+    Como usuario 
+    quiero modificar un proyecto 
+    para reflejar cambios que surgieron en el mismo.
 
-    Scenario: Project Name Modification
-        Given that I'm in the project modification form
-        And I change the project name
-        When I save the changes
-        Then I should see the project with the new name
+    Escenario: Modificación de nombre
+        Dado que estoy en el formulario de modificación del proyecto y modifico el nombre del mismo
+        Cuando guardo los cambios
+        Entonces el proyecto se muestra con todos los cambios realizados.
 
-    Scenario: Project Description Modification
-        Given that I'm in the project modification form
-        And I change the project description
-        When I save the changes
-        Then I should see the project with the new description
-    
-    Scenario: Project Status Modification
-        Given that I'm in the project modification form
-        And I change the project status
-        When I save the changes
-        Then I should see the project with the new status
+    Escenario: Modificación de fecha de fin
+        Dado que estoy en el formulario de modificación del proyecto y modifico la fecha de fin del mismo
+        Cuando guardo los cambios
+        Entonces el proyecto se muestra con todos los cambios realizados.
 
-    Scenario: Project Start Date Modification
-        Given that I'm in the project modification form
-        And I change the project start date
-        When I save the changes
-        Then I should see the project with the new start date
-    
-    Scenario: Project End Date Modification
-        Given that I'm in the project modification form
-        And I change the project end date
-        When I save the changes
-        Then I should see the project with the new end date
+    Escenario: Modificación de fecha de inicio
+        Dado que estoy en el formulario de modificación del proyecto y modificó fecha de inicio del mismo
+        Cuando guardo los cambios
+        Entonces el proyecto se muestra con todos los cambios realizados.
 
-    Scenario: Project Participants Modification
-        Given that I'm in the project modification form
-        And I change the project participants
-        When I save the changes
-        Then I should see the project with the new participants
+    Escenario: Modificación de descripción
+        Dado que estoy en el formulario de modificación del proyecto y modifico la descripción del mismo
+        Cuando guardo los cambios
+        Entonces el proyecto se muestra con todos los cambios realizados.
 
-    Scenario: Cancellation of Project Modification
-        Given that I'm in the project modification form
-        And I make some changes
-        When I cancel the project modification
-        Then I should see the project without changes
+    Escenario: Modificación de líder
+        Dado que estoy en el formulario de modificación del proyecto y modifico el líder del mismo
+        Cuando guardo los cambios
+        Entonces el proyecto muestra al nuevo líder ingresado..
+
+    Escenario: Modificación de estado
+        Dado que estoy en el formulario de modificación del proyecto y modifico el estado del mismo
+        Cuando guardo los cambios
+        Entonces el proyecto se muestra con todos los cambios realizados.
+
+    Escenario: Modificación de tipo
+        Dado que estoy en el formulario de modificación del proyecto y modifico el tipo
+        Cuando guardo los cambios
+        Entonces el proyecto se muestra con todos los cambios realizados.
+
+    Escenario: Modificación cancelada
+        Dado que estoy en el formulario de modificación del proyecto
+        Cuando cancelo la edición
+        Entonces no se guardarán los cambios.
